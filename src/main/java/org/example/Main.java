@@ -3,21 +3,21 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        //Класс для расчета коофицента аннуитента
+        //Класс для расчета коофицента аннуитета
         BmiService service = new BmiService();
 
         //ставка в процентах годовая
-        float iYear = 9.99F;
+        float iYear = (float) 9.99;
 
         //длительность в годах
-        float nYear = 1;
+        float n = 1;
 
         //Величина кредита
-        float s = 1_000_000;
+        float amount = 1_000_000;
 
-        //Расчет аннуитента где "pаy" это переодическая выплата в месяц
+        //Расчет аннуитета где "pаy" это переодическая выплата в месяц
 
-        float pay = service.calculate(iYear, nYear, s);
+        float pay = (int) service.calculate(iYear, n, amount);
 
         System.out.println("Ваш платёж в месяц составит " + pay + " Рублей." );
 

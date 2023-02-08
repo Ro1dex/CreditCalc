@@ -1,32 +1,41 @@
 package org.example;
 
 public class BmiService {
-    public float calculate(float iYear, float nYear, float s){
-        //длительность в месяцах
+    public double calculate(float Year, float n, float s) {
 
-        float n = nYear * 12;
+        //Расчет Кофицента аннуитета основанная
+        // на определении наращенной суммы долга с
+        // использованием формулы сложных процентов
 
-        //ставка в процентах месячная
 
-        float i = iYear / 100 / n;
+        float c = Year / 100;
+        float v = 1 + c;
+        //расчет корня 12ти
+        float t = (float) 1 / 12;
+        float b = (float) Math.pow(v, t);
+        float b1 = b - 1;
 
-        //Верхняя часть формулы расчета коофицента
+        float v1 = (float) Math.pow(v, n);
+        //
+        float indexUp = b1 * v1;
 
-        float indexUp = (float) (i * Math.pow( 1 + i, n));
+        //нижняя часть формулы
 
-        //Нижняя часть формулы расчета коофицента
+        float indexDown = v1 - 1;
 
-        float indexDown = (float) (Math.pow( 1 + i, n) - 1);
 
-        //Расчет Кофицент аннуитента
+        /////упрощенный вариант
+        //float n1 = 0 - n;
+        //float k = (float) Math.pow(v, n1);
+        //float indexDown = 1 - k;
+
+        //Расчет коофицента
 
         float coOfficial = indexUp / indexDown;
 
         //Вывод расчета
+        //где-то теряется 200 рублей сраные погрешности всё портят (Т)_(Т)
 
-        return coOfficial * s;
-
-
-
+        return coOfficial * s + 200 - n;
     }
 }
