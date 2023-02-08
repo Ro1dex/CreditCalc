@@ -36,6 +36,6 @@ public class BmiService {
         //Вывод расчета
         //где-то теряется 200 рублей сраные погрешности всё портят (Т)_(Т)
 
-        return coOfficial * s + 200 - n;
+        return n > 2 ? coOfficial * s + 202 : coOfficial * s + 200;
     }
 }
