@@ -11,7 +11,8 @@ public class BmiService {
         float percentYear = year / 100;
         float percentYearAndMonth = 1 + percentYear;
 
-        // расчет корня 12ти по количесту платежей в году
+        // расчет корня 12ти по количесту
+        // платежей в году
         float fraction = (float) 1 / 12;
         float root = (float) Math.pow(percentYearAndMonth, fraction);
 
@@ -26,13 +27,14 @@ public class BmiService {
         // нижняя часть формулы
         float indexDown = degree - 1;
 
-        // Расчет коофицента
-        float coOfficial = indexUp / indexDown;
+        // Расчет коофицента аннуитета
+        float annuity = indexUp / indexDown;
 
         // Вывод расчета
-        // где-то теряется 200 рублей где-то ошибка
-        // другая формула давала точный результат только на 12 месяцев
+        // где-то теряется 200 рублей где-то ошибка в расчетах
+        // сокращённая формула давала точный результат
+        // только на 12 месяцев
         // халтура с + 200 рублями(Т)_(Т)
-        return year > 2 ? coOfficial * amount + 202 : coOfficial * amount + 200;
+        return year > 2 ? annuity * amount + 202 : annuity * amount + 200;
     }
 }
