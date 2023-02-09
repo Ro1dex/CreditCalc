@@ -7,17 +7,17 @@ public class Main {
         BmiService service = new BmiService();
 
         //ставка в процентах годовая
-        float iYear = (float) 9.99;
+        float percentYear = (float) 9.99;
 
         //длительность в годах
-        float n = 2;
+        float quantity = 2;
 
         //Величина кредита
         float amount = 1_000_000;
 
         //Расчет аннуитета где "pаy" это переодическая выплата в месяц
 
-        float pay = (int) service.calculate(iYear, n, amount);
+        float pay = (int) service.calculate(percentYear,quantity, amount);
 
         System.out.println("Ваш платёж в месяц составит " + pay + " Рублей." );
 

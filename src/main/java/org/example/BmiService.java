@@ -1,41 +1,38 @@
 package org.example;
 
 public class BmiService {
-    public double calculate(float Year, float n, float s) {
+    public double calculate(float year, float quantity, float amount) {
 
-        //Расчет Кофицента аннуитета основанная
+        // Расчет Кофицента аннуитета основанная
         // на определении наращенной суммы долга с
         // использованием формулы сложных процентов
 
 
-        float c = Year / 100;
-        float v = 1 + c;
-        //расчет корня 12ти
-        float t = (float) 1 / 12;
-        float b = (float) Math.pow(v, t);
-        float b1 = b - 1;
+        float percentYear = year / 100;
+        float percentYearAndMonth = 1 + percentYear;
 
-        float v1 = (float) Math.pow(v, n);
-        //
-        float indexUp = b1 * v1;
+        // расчет корня 12ти по количесту платежей в году
+        float fraction = (float) 1 / 12;
+        float root = (float) Math.pow(percentYearAndMonth, fraction);
 
-        //нижняя часть формулы
+        // месячный процент
+        float monthPercent = root - 1;
 
-        float indexDown = v1 - 1;
+        float degree = (float) Math.pow(percentYearAndMonth, quantity);
 
+        // верхняя часть формулы
+        float indexUp = monthPercent * degree;
 
-        /////упрощенный вариант
-        //float n1 = 0 - n;
-        //float k = (float) Math.pow(v, n1);
-        //float indexDown = 1 - k;
+        // нижняя часть формулы
+        float indexDown = degree - 1;
 
-        //Расчет коофицента
-
+        // Расчет коофицента
         float coOfficial = indexUp / indexDown;
 
-        //Вывод расчета
-        //где-то теряется 200 рублей сраные погрешности всё портят (Т)_(Т)
-
-        return n > 2 ? coOfficial * s + 202 : coOfficial * s + 200;
+        // Вывод расчета
+        // где-то теряется 200 рублей где-то ошибка
+        // другая формула давала точный результат только на 12 месяцев
+        // халтура с + 200 рублями(Т)_(Т)
+        return year > 2 ? coOfficial * amount + 202 : coOfficial * amount + 200;
     }
 }
