@@ -10,7 +10,7 @@ public class Main {
         float iYear = (float) 9.99;
 
         //длительность в годах
-        float n = 3;
+        float n = 2;
 
         //Величина кредита
         float amount = 1_000_000;
